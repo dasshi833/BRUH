@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dont judge the code ok</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 750px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        h1 {
+            display: flex;
+            text-align: center;
+            color: #2d3d5c;
+        }
+        .poem {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e55347;
+        }
+        .yanna {
+            border: 2px solid #ff6f61;
+            border-radius: 10px;
+            max-width: 300px;
+            margin: 0 2rem;
+        }
+        .yanna img {
+            width: 100%;
+            border-radius: 10px;
+            padding: 0;
+        }
+        .audio-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="audio-container">
+        <button id="playButton">Play Audio</button>
+        <audio id="audioPlayer">
+            <source src="\2025-01-08 19-53-29.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="container">
+        <div>
+            <h1>Happy Birthday, Yanna!</h1>
+            <div class="poem" id="poem">
+                <p>This year</p>
+            </div>
+            <button onclick="togglePoem()">Click me</button>
+            <div class="footer">
+                <p>With love,</p>
+                <p>cj</p>
+            </div>
+        </div>
+        <span class="yanna">
+            <img src="https://i.ibb.co/2vzwbhc/IMG-20241125-141821.jpg" alt="Yanna's Image">
+        </span>
+    </div>
+
+    <script>
+        var isOriginalPoem = true;
+
+        function togglePoem() {
+            var poemText;
+            if (isOriginalPoem) {
+                poemText = ` <p>A bond that formed so naturally,</p><p>Rare as though they’re made to be.</p><p>In all my days, I’ve yet to meet</p><p>A friend like you, who’s just like me.</p><p>None have been, though many tried</p><p>No soul as clean, no heart as wide.</p><p>A friendship pure, with trust so deep,</p><p>Never to falter, never to sleep</p><p>In every step, you’ve grown so strong,</p><p>Counting memories you’ve strewn along.</p><p>Onward you go, with strength and grace,</p><p>Love will find you, o sweet Arianna,</p><p>Each and every day.</p>`; 
+            } else {
+                poemText = `<p></p>`;
+            }
+            document.getElementById("poem").innerHTML = poemText;
+            isOriginalPoem = !isOriginalPoem;
+        }
+        var audioPlayer = document.getElementById("audioPlayer");
+        var playButton = document.getElementById("playButton");
+        playButton.addEventListener("click", function() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playButton.textContent = "Pause Audio";
+            } else {
+                audioPlayer.pause();
+                playButton.textContent = "Play Audio";
+            }
+        });
+    </script>
+</body>
+</html>
